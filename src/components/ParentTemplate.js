@@ -46,7 +46,10 @@ export default class ParentTemplate extends React.Component {
             <Label ribbon color="teal">
               Create Template
             </Label>
-            <TemplateComponent mode={this.state.mode} data={this.state.data} />
+            <TemplateComponent
+              templateName={this.state.templateName}
+              data={this.state.data}
+            />
             <br />
           </Segment>
           <Segment>
