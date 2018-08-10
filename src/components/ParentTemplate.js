@@ -35,7 +35,20 @@ const datajson = [
 export default class ParentTemplate extends React.Component {
   state = {
     mode: true,
-    data: datajson
+    data: datajson,
+    templates: []
+  };
+  createOnSubmit = () => {
+    let dataSubmit = {
+      name: this.state.templateName,
+      activeInd: "Y"
+    };
+    this.state.templates.push(dataSubmit);
+    console.log(this.state.templateName);
+    console.log(this.state.templates);
+  };
+  handleOnChange = (e, { name, value }) => {
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -48,7 +61,9 @@ export default class ParentTemplate extends React.Component {
             </Label>
             <TemplateComponent
               templateName={this.state.templateName}
-              data={this.state.data}
+              handleOnChange={this.handleOnChange}
+              createOnSubmit={this.createOnSubmit}
+              activeInd={this.state.activeInd}
             />
             <br />
           </Segment>
